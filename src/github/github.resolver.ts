@@ -1,7 +1,7 @@
+// src/github/github.resolver.ts
 import { Resolver, Query } from '@nestjs/graphql';
 import { GithubService } from './github.service';
 import { Profile } from './dto/profile.dto';
-import { Repository } from './dto/repository.dto';
 
 @Resolver()
 export class GithubResolver {
@@ -9,11 +9,16 @@ export class GithubResolver {
 
   @Query(() => Profile)
   async profile() {
-    return this.githubService.getProfile();
-  }
+    const githubProfile = await this.githubService.getProfile();
 
-  @Query(() => [Repository])
-  async repositories() {
-    return this.githubService.getRepos();
+    const profile: Profile = {
+      login: githubProfile.login,
+      avatar_url: githubProfile.avatar_url,
+      bio: githubProfile.bio || '',
+      followers: githubProfile.followers,
+      following: githubProfile.following,
+    };
+
+    return profile;
   }
 }

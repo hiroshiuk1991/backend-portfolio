@@ -1,3 +1,4 @@
+// src/github/dto/profile.dto.ts
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
@@ -8,7 +9,7 @@ export class Profile {
   @Field()
   avatar_url: string;
 
-  @Field()
+  @Field({ nullable: true })
   bio: string;
 
   @Field(() => Int)
