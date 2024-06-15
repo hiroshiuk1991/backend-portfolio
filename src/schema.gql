@@ -1,0 +1,26 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Profile {
+  login: String!
+  avatar_url: String!
+  bio: String!
+  followers: Int!
+  following: Int!
+}
+
+type Repository {
+  name: String!
+  html_url: String!
+  description: String!
+  stargazers_count: Int!
+  forks_count: Int!
+  language: String!
+}
+
+type Query {
+  sayHello: String!
+  profile: Profile!
+  repositories: [Repository!]!
+}
