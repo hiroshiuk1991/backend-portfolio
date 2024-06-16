@@ -1,3 +1,4 @@
+// src/app.module.ts
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -5,6 +6,7 @@ import { join } from 'path';
 import { AppService } from './app.service';
 import { AppResolver } from './app.resolver';
 import { GithubModule } from './github/github.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -14,6 +16,7 @@ import { GithubModule } from './github/github.module';
     }),
     GithubModule,
   ],
+  controllers: [AppController],
   providers: [AppService, AppResolver],
 })
 export class AppModule {}
